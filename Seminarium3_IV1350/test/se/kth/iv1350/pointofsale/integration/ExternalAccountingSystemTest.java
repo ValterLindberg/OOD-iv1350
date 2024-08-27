@@ -52,10 +52,7 @@ class ExternalAccountingSystemTest {
 		
 	}
 
-	@Test
-	void testGetListOfSales() {
-		
-	}
+	
 
 	@Test
 	void testUpdateRegisterBalance() {

@@ -11,6 +11,7 @@ public class Item {
 	private String itemDescription;
 	private int quantity;
 	private double vatRate;
+	private int soldItemQuantity;
 
 	/**
 	 * Creates a new Item instance, parameters specify its characteristics
@@ -22,12 +23,13 @@ public class Item {
 	 */
 	
 	public Item(int itemID, double itemPrice, String itemDescription, 
-				int quantity, double vatRate){
+				int quantity, double vatRate, int soldItemQuantity){
 		this.itemID = itemID;
 		this.itemPrice = itemPrice;
 		this.itemDescription = itemDescription;
 		this.quantity = quantity;
 		this.vatRate = vatRate;
+		this.soldItemQuantity = soldItemQuantity;
 	}
 	
 	/**
@@ -70,6 +72,18 @@ public class Item {
 		return this.vatRate;
 	}
 	
+	public int getSoldItemQuantity() {
+		return this.soldItemQuantity;
+	}
+	
+	public void setSoldItemQuantity(int soldItemQuantity) {
+		this.soldItemQuantity = soldItemQuantity;
+	}
+	
+	public void incrementSoldItemQuantity() {
+		this.soldItemQuantity++;
+	}
+	
 	/**
 	 * Helper function to determine how many of a particular item
 	 * is left in stock after a sale is completed
@@ -82,7 +96,7 @@ public class Item {
 	public Item updateItemQuantity(int quantity, int numberSold, Item item) {
 		quantity = item.getItemQuantity() - numberSold;
 		Item i = new Item(item.getItemID(), item.getItemPrice(),
-				item.getItemDescription(), quantity, item.getItemVatRate());
+				item.getItemDescription(), quantity, item.getItemVatRate(), numberSold);
 		return i;
 	}
 }

@@ -45,10 +45,6 @@ class ControllerTest {
 		assertTrue(expectedItem == fetchFirstItem, "Result not correct");
 	}
 
-	@Test
-	void testEndSale() {
-		
-	}
 
 	@Test
 	void testPay() {

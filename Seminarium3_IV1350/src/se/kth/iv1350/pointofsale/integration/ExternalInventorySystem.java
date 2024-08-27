@@ -2,7 +2,7 @@ package se.kth.iv1350.pointofsale.integration;
 
 import se.kth.iv1350.pointofsale.model.*;
 import java.util.*;
-
+import se.kth.iv1350.pointofsale.integration.*;
 /**
  * This class handles the inventory system of the store
  */
@@ -16,10 +16,10 @@ public class ExternalInventorySystem {
 	 */
 	
 	public ExternalInventorySystem() {
-		this.storeItemStock.add(new Item(0,66.5,"Arvid Nordquist mellanrost",100,2.2));
-		this.storeItemStock.add(new Item(1,10.5,"Kvisttomater 200g",100,2.2));
-		this.storeItemStock.add(new Item(2,15,"Arla mellanmjölk 1L",100,2.2));
-		this.storeItemStock.add(new Item(3,150,"Melange 10g",100,2.2));
+		this.storeItemStock.add(new Item(0,66.5,"Arvid Nordquist mellanrost",100,2.2,0));
+		this.storeItemStock.add(new Item(1,10.5,"Kvisttomater 200g",100,2.2,0));
+		this.storeItemStock.add(new Item(2,15,"Arla mellanmjölk 1L",100,2.2,0));
+		this.storeItemStock.add(new Item(3,150,"Melange 10g",100,2.2,0));
 	}
 	
 	/**
@@ -38,7 +38,15 @@ public class ExternalInventorySystem {
 	 * @return the item found in the inventory using the item ID
 	 */
 	
-	public Item getItem(int itemID) {
+	public Item getItem(int itemID)  {
+		/*
+		if(itemID == 13) {
+			throw new InvalidItemIDException("No such item in stock");
+		}
+		if(itemID == 123) {
+			throw new DatabaseNotRunningException("Database currently offline");
+		}
+		 */
 		return storeItemStock.get(itemID);
 	}
 	
@@ -46,13 +54,12 @@ public class ExternalInventorySystem {
 	 * Updates the store inventory by subtracting the number of items in stock
 	 * with the amount of sold items
 	 * @param soldItems list of all items sold in a sale instance
-	 * @param sale a particular sale instance
 	 */
 	
-	public void updateInventory(List<Item> soldItems, Sale sale) {
-		List<Integer> soldItemsQuantity = sale.getSoldItemQuantity();
+	public void updateInventory(List<Item> soldItems) {
+		
 		for(Item item : soldItems) {
-			item = item.updateItemQuantity(storeItemStock.get(item.getItemID()).getItemQuantity(),soldItemsQuantity.get(soldItems.indexOf(item)), item);
+			item = item.updateItemQuantity(storeItemStock.get(item.getItemID()).getItemQuantity(),soldItems.get(item.getItemID()).getSoldItemQuantity(), item);
 			storeItemStock.set(item.getItemID(), item);
 		}
 		

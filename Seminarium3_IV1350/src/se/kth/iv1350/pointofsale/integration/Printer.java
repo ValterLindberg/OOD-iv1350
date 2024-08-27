@@ -19,17 +19,16 @@ public class Printer {
 	/**
 	 * This method prints a receipt containing all information about a sale
 	 * @param receipt contains information about a sale instance
-	 * @param soldItemQuantity the quantity of each item sold in a sale
 	 */
 	
-	public void printReceipt(Receipt receipt, List<Integer> soldItemQuantity) {
+	public void printReceipt(Receipt receipt) {
 		
 		
 		System.out.println(receipt.getStoreName());
 		System.out.println("Sale ID: " + receipt.getSaleID());
 		System.out.println("\n " + receipt.getSaleTime());
 		for(Item item : receipt.getItemList()) {
-			System.out.println(soldItemQuantity.get(item.getItemID())+"x " + item.getItemDescription() + " " + item.getItemPrice()*soldItemQuantity.get(item.getItemID()) + "kr\n");
+			System.out.println(item.getSoldItemQuantity() +"x " + item.getItemDescription() + " " + item.getItemPrice()*item.getSoldItemQuantity() + "kr\n");
 		}
 		System.out.println("Total price: " + receipt.getTotalPrice());
 		System.out.println("Total VAT rate: " + receipt.getTotalVAT());

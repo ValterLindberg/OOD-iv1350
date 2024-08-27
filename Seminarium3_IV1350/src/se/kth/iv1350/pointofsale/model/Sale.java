@@ -21,7 +21,6 @@ public class Sale {
 	private SaleDTO saleInfo;
 	private ExternalInventorySystem extInv;
 	private ExternalAccountingSystem extAcc;
-	private List<Integer> soldItemQuantity = new ArrayList<>();
 	
 	/**
 	 * Creates a new sale instance with a unique ID and time stamp
@@ -54,12 +53,12 @@ public class Sale {
 		Item item = extInv.getItem(itemID);
 		
 		if(hasBeenScanned(item) == true) {
-			soldItemQuantity.set(itemList.indexOf(item), (soldItemQuantity.get(itemList.indexOf(item))+1));
+			item.incrementSoldItemQuantity();
 			updateSaleInfo(item.getItemPrice(),item.getItemVatRate() ,itemList);
 		}
 		else {
 			itemList.add(item);
-			soldItemQuantity.add(1);
+			item.setSoldItemQuantity(1);
 			updateSaleInfo(item.getItemPrice(),item.getItemVatRate(),itemList);
 		}
 	}
@@ -93,7 +92,7 @@ public class Sale {
 		
 		Receipt receipt = new Receipt(saleInfo);
 		Printer printer = new Printer();
-		printer.printReceipt(receipt,soldItemQuantity);
+		printer.printReceipt(receipt);
 		
 		return saleInfo.getTotalPrice();
 		
@@ -108,12 +107,4 @@ public class Sale {
 		return this.itemList;
 	}
 	
-	/**
-	 * Retrieves the quantity sold of a particular item in a sale instance
-	 * @return list of item quantities
-	 */
-	
-	public List<Integer> getSoldItemQuantity(){
-		return this.soldItemQuantity;
-	}
 }

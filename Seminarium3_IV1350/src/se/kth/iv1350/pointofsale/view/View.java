@@ -1,7 +1,10 @@
 package se.kth.iv1350.pointofsale.view;
 
 import se.kth.iv1350.pointofsale.controller.*;
-
+import se.kth.iv1350.pointofsale.integration.*;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 /**
  * Placeholder for an actual view. Starts a simulated sale instance
  *
@@ -26,17 +29,31 @@ public class View {
 	public void simulateSale() {
 		contr.startSale();
 		System.out.println("New sale started");
-		//hard-coded stuff
-		contr.scanItem(0);
-		contr.scanItem(0);
-		contr.scanItem(0);
-		contr.scanItem(0);
-		contr.scanItem(0);
+		
+		String str = "";
+		double total = 0;
+		
+		str = contr.scanItem(0);
+		System.out.println(str);
+		str = contr.scanItem(0);
+		System.out.println(str);
+		str = contr.scanItem(0);
+		System.out.println(str);
+		str = contr.scanItem(0);
+		System.out.println(str);
+		str = contr.scanItem(0);
+		System.out.println(str);
 		for(int i = 0; i < 4; i++) {
-			contr.scanItem(i);
-		}
-		//hard-coded stuff
-		contr.endSale();
+				str = contr.scanItem(i);
+				System.out.println(str);
+			}
+		str = contr.scanItem(13);
+		System.out.println(str);
+		str = contr.scanItem(3);
+		System.out.println(str);
+		
+		total = contr.endSale();
+		System.out.println("Total cost of purchase: " + total);
 		double change = 0;
 		change = contr.pay(1000, "cash");
 		System.out.println("Change: " + change);

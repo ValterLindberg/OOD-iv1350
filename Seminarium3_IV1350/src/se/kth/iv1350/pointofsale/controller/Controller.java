@@ -3,6 +3,8 @@ package se.kth.iv1350.pointofsale.controller;
 import se.kth.iv1350.pointofsale.integration.*;
 import se.kth.iv1350.pointofsale.model.*;
 
+
+
 /**
  * This is the controller class of the program
  * which contains all the core methods of the application
@@ -41,13 +43,17 @@ public class Controller {
 	 * @param itemID item identification used to check item validity
 	 */
 	
-	public void scanItem(int itemID) {
+	public String scanItem(int itemID) {
+		
+		
+		
 		if(extInv.checkValidID(itemID) == false) {
-			System.out.println("No such item in stock");
+			return "No such item in stock";
 		}
 		else {
 			sale.addItem(itemID);
-		}
+			return "item " + itemID + " added";
+		} 
 	}
 	
 	/**
@@ -55,9 +61,10 @@ public class Controller {
 	 * and computes the final cost of the sale
 	 */
 	
-	public void endSale() {
-		extInv.updateInventory(sale.getItemList(),this.sale);
+	public double endSale() {
+		extInv.updateInventory(sale.getItemList());
 		costOfSale = sale.terminateSale();
+		return costOfSale;
 	}
 	
 	/**
@@ -69,7 +76,6 @@ public class Controller {
 	
 	public double pay(double amount, String paymentType) {
 		double change = amount - costOfSale;
-		System.out.println("Method of payment: " + paymentType);
 		return change;
 	}
 	
