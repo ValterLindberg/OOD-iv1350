@@ -1,0 +1,41 @@
+
+DatabaseNotRunningException: Database currently offline 
+DatabaseNotRunningException: Database currently offline 
+DatabaseNotRunningException: Database currently offline 
+InvalidItemIDException: No such item in stock 
+InvalidItemIDException: No such item in stock 
+InvalidItemIDException: No such item in stock 
+InvalidItemIDException: No such item in stock 
+InvalidItemIDException: No such item in stock 
+InvalidItemIDException: No such item in stock 
+InvalidItemIDException: No such item in stock 
+InvalidItemIDException: No such item in stock 
+InvalidItemIDException: No such item in stock 
+InvalidItemIDException: No such item in stock 
+InvalidItemIDException: No such item in stock 
+InvalidItemIDException: No such item in stock 
+InvalidItemIDException: No such item in stock 
+DatabaseNotRunningException: Database currently offline 
+DatabaseNotRunningException: Database currently offline 
+DatabaseNotRunningException: Database currently offline 
+DatabaseNotRunningException: Database currently offline 
+DatabaseNotRunningException: Database currently offline 
+DatabaseNotRunningException: Database currently offline 
+DatabaseNotRunningException: Database currently offline 
+DatabaseNotRunningException: Database currently offline 
+DatabaseNotRunningException: Database currently offline 
+DatabaseNotRunningException: Database currently offline 
+DatabaseNotRunningException: Database currently offline 
+InvalidItemIDException: No such item in stock 
+InvalidItemIDException: No such item in stock 
+InvalidItemIDException: No such item in stock 
+InvalidItemIDException: No such item in stock 
+InvalidItemIDException: No such item in stock 
+InvalidItemIDException: No such item in stock 
+InvalidItemIDException: No such item in stock 
+InvalidItemIDException: No such item in stock 
+InvalidItemIDException: No such item in stock 
+InvalidItemIDException: No such item in stock 
+InvalidItemIDException: No such item in stock 
+InvalidItemIDException: No such item in stock 
+InvalidItemIDException: No such item in stock 

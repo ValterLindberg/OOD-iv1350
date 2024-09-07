@@ -1,0 +1,1 @@
+DatabaseNotRunningException Database currently offline
